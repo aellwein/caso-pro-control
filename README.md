@@ -1,6 +1,6 @@
 # CASO Pro 3500 RC Demo
 _Demonstration on how to control your [CASO Pro
-3500](http://www.caso-germany.com/produkte/induktion/mobile-einzelkochfelder/detail/pro-3500/) induction cooker remotely_
+3500](http://www.caso-germany.com/en/products/induction/mobile-single-hobs/product-view/p/77/) induction cooker remotely_
 
 ![casopro3500](static/img/casopro.png)
 
