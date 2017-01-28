@@ -21,6 +21,7 @@ class CustomStaticFileHandler(StaticFileHandler):
 class RestHandler(RequestHandler):
     def initialize(self):
         self.channels = self.settings["channels"]
+        self.switchtime = self.settings["switchtime"]
 
     async def get(self, *args, **kwargs):
         if len(args) < 2:
@@ -31,7 +32,7 @@ class RestHandler(RequestHandler):
         self.write(result)
 
     async def handle_action(self, action):
-        GPIO.output(self.channels[action], GPIO.HIGH)
-        await asyncio.sleep(0.05)
         GPIO.output(self.channels[action], GPIO.LOW)
+        await asyncio.sleep(self.switchtime)
+        GPIO.output(self.channels[action], GPIO.HIGH)
         return '%s executed' % action

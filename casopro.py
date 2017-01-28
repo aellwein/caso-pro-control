@@ -13,6 +13,7 @@ log = logging.getLogger('casopro')
 define('port', type=int, default=8080, help='port to listen on')
 define('address', default='0.0.0.0', help='network address to listen on')
 define('debug', type=bool, default=False, help='enable debug mode')
+define('switchtime', type=float, default=0.05, help='time in seconds for switching on relays')
 
 
 def handlers():
@@ -31,18 +32,20 @@ def setup_gpio():
     _chans = [i for i in _channels.values()]
     log.debug('using channels: {}'.format(_chans))
     GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(_chans, GPIO.OUT)
+    GPIO.setup(_chans, GPIO.OUT, initial=GPIO.HIGH)
     return _channels
 
 
 def init_app():
     app = Application(handlers=handlers(),
                       debug=options.debug,
-                      channels=setup_gpio()
+                      channels=setup_gpio(),
+                      switchtime=options.switchtime,
                       )
 
     log.info('Application will listen on %s:%d' % (options.address, options.port))
     app.listen(options.port, options.address)
+    log.info('READY.')
 
 
 def main():
@@ -55,6 +58,7 @@ def main():
 
     log.debug('Effective command line options: %s' % options.as_dict())
 
+    log.info('Using delay of %d seconds to switch on GPIO' % options.switchtime)
     setup_gpio()
     init_app()
 
