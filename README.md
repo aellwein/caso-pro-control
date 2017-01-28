@@ -2,10 +2,12 @@
 _Demonstration on how to control your [CASO Pro
 3500](http://www.caso-germany.com/en/products/induction/mobile-single-hobs/product-view/p/77/) induction cooker remotely_
 
-![casopro3500](static/img/casopro.png)
+Demo video:
+
+[![Little Demo](https://github.com/aellwein/aellwein.github.io/blob/master/casopro/preview.png)](https://www.youtube.com/watch?v=2UwJkc3DaE4)
 
 ## Hardware Installation
-_will be added soon_
+Look at the [wiki](https://github.com/aellwein/caso-pro-control/wiki) for detailed description.
 
 
 ## Software Requirements
@@ -21,6 +23,7 @@ _will be added soon_
 
 ## Running
 (run as root or with sudo) ``casopro``
+For possible options, consult ``casopro --help``.
 
 ## Developer Mode
 * ``python3 setup.py develop``
